@@ -13,9 +13,7 @@ import NewNotePane from "./Pane/Create";
 const Notes = () => {
   const [loading, setLoading] = useState(true);
   const [showNewNotePane, setShowNewNotePane] = useState(false);
-  // const [showDeleteAlert, setShowDeleteAlert] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-  // const [selectedNoteIds, setSelectedNoteIds] = useState([]);
   const [notes, setNotes] = useState([]);
 
   useEffect(() => {
@@ -41,6 +39,7 @@ const Notes = () => {
   return (
     <Container>
       <Header
+        menuBarToggle={function noRefCheck() {}}
         title="All Notes"
         actionBlock={
           <Button
@@ -87,14 +86,6 @@ const Notes = () => {
         setShowPane={setShowNewNotePane}
         showPane={showNewNotePane}
       />
-      {/* {showDeleteAlert && (
-        <DeleteAlert
-          refetch={fetchNotes}
-          selectedNoteIds={selectedNoteIds}
-          setSelectedNoteIds={setSelectedNoteIds}
-          onClose={() => setShowDeleteAlert(false)}
-        />
-      )} */}
     </Container>
   );
 };

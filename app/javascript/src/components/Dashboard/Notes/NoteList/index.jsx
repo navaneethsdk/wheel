@@ -2,11 +2,14 @@ import React, { useState } from "react";
 
 import Note from "./Note";
 
+import DeleteAlert from "../DeleteAlert";
 import EditNotePane from "../Pane/Edit";
 
 const NoteList = ({ notes = [], fetchNotes }) => {
   const [showEditNote, setShowEditNote] = useState(false);
   const [selectedNote, setSelectedNote] = useState({});
+  const [showDeleteAlert, setShowDeleteAlert] = useState(false);
+  const [selectedDeleteNoteIds, setSelectedDeleteNoteIds] = useState([]);
   return (
     <>
       <div>
@@ -14,7 +17,9 @@ const NoteList = ({ notes = [], fetchNotes }) => {
           <Note
             key={idx}
             note={note}
+            setSelectedDeleteNoteIds={setSelectedDeleteNoteIds}
             setSelectedNote={setSelectedNote}
+            setShowDeleteAlert={setShowDeleteAlert}
             setShowEditNote={setShowEditNote}
           />
         ))}
@@ -25,6 +30,14 @@ const NoteList = ({ notes = [], fetchNotes }) => {
         setShowPane={setShowEditNote}
         showPane={showEditNote}
       />
+      {showDeleteAlert && (
+        <DeleteAlert
+          refetch={fetchNotes}
+          selectedDeleteNoteIds={selectedDeleteNoteIds}
+          setSelectedDeleteNoteIds={setSelectedDeleteNoteIds}
+          onClose={() => setShowDeleteAlert(false)}
+        />
+      )}
     </>
   );
 };
