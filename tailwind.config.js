@@ -1,7 +1,7 @@
 module.exports = {
   important: true,
   purge: {
-    enabled: process.env.NODE_ENV === "production" ? true : false,
+    enabled: process.env.NODE_ENV === "production",
     content: [
       "./app/javascript/**/*.js",
       "./app/javascript/**/**/*.js",
@@ -30,6 +30,10 @@ module.exports = {
           800: "#262F5F",
           900: "#192040",
         },
+      },
+      width: {
+        323: "80.9rem",
+        318: "79.6rem",
       },
     },
   },
