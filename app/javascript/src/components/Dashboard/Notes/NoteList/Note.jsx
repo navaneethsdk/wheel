@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Clock } from "@bigbinary/neeto-icons";
-import { Avatar, Tooltip } from "@bigbinary/neetoui";
+import { Avatar, Tooltip, Tag } from "@bigbinary/neetoui";
 
 import DropDownNote from "./DropDownNote";
 
@@ -40,11 +40,13 @@ const Note = ({
       </div>
       <div className="order-1 mt-3 mb-4 flex h-6 flex-none flex-grow-0 flex-row items-center self-stretch p-0">
         <div className="order-none flex h-5 flex-none flex-grow flex-col items-start p-0">
-          <div className="order-none box-border flex h-5 w-24 flex-none flex-grow-0 flex-row items-center justify-center rounded-sm border bg-gray-100 py-0.5 px-2">
-            <p className="order-1 h-4 w-20 flex-none flex-grow-0 text-xs font-normal not-italic leading-4 text-gray-600">
-              Getting Started
-            </p>
-          </div>
+          <Tag
+            className="bg-gray-100 text-gray-600"
+            label="Getting Started"
+            size="small"
+            style="primary"
+            type="solid"
+          />
         </div>
         <div className="order-1 flex h-6 w-40 flex-none flex-grow-0 flex-row items-center p-0">
           <div className="order-none flex h-4 w-32 flex-none flex-grow-0 flex-row items-center p-0">
