@@ -29,6 +29,7 @@ const DeleteAlert = ({
     <Alert
       isOpen
       className="delete-alert"
+      closeButton={false}
       isSubmitting={deleting}
       message="Are you sure you want to continue? This cannot be undone."
       size="large"
