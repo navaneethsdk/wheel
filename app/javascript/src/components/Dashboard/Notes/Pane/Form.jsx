@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 
+import { Check } from "@bigbinary/neeto-icons";
 import { Formik, Form } from "formik";
 import { Button, Pane } from "neetoui";
-import { Input, Textarea } from "neetoui/formik";
+import { Input, Textarea, Select } from "neetoui/formik";
 
 import notesApi from "apis/notes";
 
@@ -41,19 +42,36 @@ const NoteForm = ({ onClose, refetch, note, isEdit }) => {
               className="w-full flex-grow-0"
               label="Title"
               name="title"
+              placeholder="Enter note title"
             />
             <Textarea
               required
               className="w-full flex-grow-0"
               label="Description"
               name="description"
-              rows={8}
+              placeholder="Enter note description"
+              rows={2}
+            />
+            <Select
+              required
+              className="w-full flex-grow-0"
+              label="Assigned contact"
+              name="contact"
+              placeholder="Select Role"
+            />
+            <Select
+              required
+              className="w-full flex-grow-0"
+              label="Tags"
+              name="tag"
+              placeholder="Select Tag"
             />
           </Pane.Body>
           <Pane.Footer>
             <Button
               className="mr-3"
               disabled={isSubmitting}
+              icon={Check}
               label={isEdit ? "Update" : "Save Changes"}
               loading={isSubmitting}
               size="large"
