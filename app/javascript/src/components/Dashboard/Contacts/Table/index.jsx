@@ -2,7 +2,7 @@ import React from "react";
 
 import { Table as NeetoUITable } from "neetoui";
 
-import { CONTACT_TABLE_COLUMN_DATA } from "./constants";
+import { CONTACT_TABLE_COLUMN_DATA } from "../constants";
 
 const Table = ({
   selectedContactIds,

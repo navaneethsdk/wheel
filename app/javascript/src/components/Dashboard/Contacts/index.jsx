@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 
+import { Settings, Plus, Search } from "@bigbinary/neeto-icons";
+import { Typography } from "neetoui";
 import { MenuBar } from "neetoui/layouts";
 import queryString from "query-string";
 
@@ -25,14 +27,45 @@ const Contacts = ({ history, location }) => {
     <>
       <MenuBar showMenu title="Contacts">
         {CONTACTS_NAVLINKS.map(navlink => (
-          <MenuBar.Item
+          <MenuBar.Block
             active={tab === navlink.key}
-            description={navlink.description}
             key={navlink.key}
             label={navlink.label}
             onClick={() => setActiveNavlink(navlink)}
           />
         ))}
+        <MenuBar.SubTitle>
+          <Typography
+            component="h4"
+            style="h5"
+            textTransform="uppercase"
+            weight="bold"
+          >
+            Segments
+          </Typography>
+        </MenuBar.SubTitle>
+        <MenuBar.SubTitle
+          iconProps={[
+            {
+              icon: Settings,
+            },
+            {
+              icon: Plus,
+            },
+            {
+              icon: Search,
+            },
+          ]}
+        >
+          <Typography
+            component="h4"
+            style="h5"
+            textTransform="uppercase"
+            weight="bold"
+          >
+            Tags
+          </Typography>
+        </MenuBar.SubTitle>
       </MenuBar>
       {<activeNavlink.component />}
     </>
