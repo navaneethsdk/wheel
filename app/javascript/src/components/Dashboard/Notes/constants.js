@@ -1,5 +1,34 @@
 import * as yup from "yup";
 
+import Home from "./Home";
+
+export const NOTES_NAVLINKS = [
+  {
+    key: "all",
+    label: "All",
+    path: "/notes?tab=all",
+    component: Home,
+  },
+  {
+    key: "users",
+    label: "Users",
+    path: "/notes?tab=users",
+    component: Home,
+  },
+  {
+    key: "leads",
+    label: "Leads",
+    path: "/notes?tab=leads",
+    component: Home,
+  },
+  {
+    key: "visitors",
+    label: "Visitors",
+    path: "/notes?tab=visitors",
+    component: Home,
+  },
+];
+
 export const NOTES_FORM_INITIAL_FORM_VALUES = {
   title: "",
   description: "",

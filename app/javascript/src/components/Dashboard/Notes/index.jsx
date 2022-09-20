@@ -1,92 +1,92 @@
 import React, { useState, useEffect } from "react";
 
-import EmptyNotesListImage from "images/EmptyNotesList";
-import { Button, PageLoader } from "neetoui";
-import { Container, Header } from "neetoui/layouts";
+import { Settings, Plus, Search } from "@bigbinary/neeto-icons";
+import { Typography } from "neetoui";
+import { MenuBar } from "neetoui/layouts";
+import queryString from "query-string";
 
-import notesApi from "apis/notes";
-import EmptyState from "components/Common/EmptyState";
+import { NOTES_NAVLINKS } from "./constants";
+import { getActiveNavLink } from "./utils";
 
-import NodeList from "./NoteList";
-import NewNotePane from "./Pane/Create";
-
-const Notes = () => {
-  const [loading, setLoading] = useState(true);
-  const [showNewNotePane, setShowNewNotePane] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [notes, setNotes] = useState([]);
+const Notes = ({ history, location }) => {
+  const { tab } = queryString.parse(location.search);
+  const [activeNavlink, setActiveNavlink] = useState(
+    () => getActiveNavLink(tab) || NOTES_NAVLINKS[0]
+  );
 
   useEffect(() => {
-    fetchNotes();
-  }, []);
+    history.push(activeNavlink?.path);
+  }, [activeNavlink]);
 
-  const fetchNotes = async () => {
-    try {
-      setLoading(true);
-      const { data } = await notesApi.fetch();
-      setNotes(data.notes);
-    } catch (error) {
-      logger.error(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  if (loading) {
-    return <PageLoader />;
+  if (location.state?.resetTab) {
+    location.state.resetTab = null;
+    setActiveNavlink(() => getActiveNavLink(tab));
   }
 
   return (
-    <Container>
-      <Header
-        menuBarToggle={function noRefCheck() {}}
-        title="All Notes"
-        actionBlock={
-          <Button
-            icon="ri-add-line"
-            label="Add New Note"
-            onClick={() => setShowNewNotePane(true)}
+    <>
+      <MenuBar showMenu title="Notes">
+        {NOTES_NAVLINKS.map(navlink => (
+          <MenuBar.Block
+            active={tab === navlink.key}
+            key={navlink.key}
+            label={navlink.label}
+            onClick={() => setActiveNavlink(navlink)}
           />
-        }
-        searchProps={{
-          value: searchTerm,
-          onChange: e => setSearchTerm(e.target.value),
-        }}
-      />
-      {notes.length ? (
-        <>
-          {/* <SubHeader
-            rightActionBlock={
-              <Button
-                disabled={!selectedNoteIds.length}
-                icon={Delete}
-                label="Delete"
-                onClick={() => setShowDeleteAlert(true)}
-              />
-            }
-          /> */}
-          {/* <Table
-            fetchNotes={fetchNotes}
-            notes={notes}
-            setSelectedNoteIds={setSelectedNoteIds}
-          /> */}
-          <NodeList fetchNotes={fetchNotes} notes={notes} />
-        </>
-      ) : (
-        <EmptyState
-          image={EmptyNotesListImage}
-          primaryAction={() => setShowNewNotePane(true)}
-          primaryActionLabel="Add New Note"
-          subtitle="Add your notes to send customized emails to them."
-          title="Looks like you don't have any notes!"
-        />
-      )}
-      <NewNotePane
-        fetchNotes={fetchNotes}
-        setShowPane={setShowNewNotePane}
-        showPane={showNewNotePane}
-      />
-    </Container>
+        ))}
+        <MenuBar.SubTitle
+          iconProps={[
+            {
+              icon: Search,
+              onClick: () => {},
+            },
+          ]}
+        >
+          <Typography
+            component="h4"
+            style="h5"
+            textTransform="uppercase"
+            weight="bold"
+          >
+            Segments
+          </Typography>
+        </MenuBar.SubTitle>
+        {/* <MenuBar.Search
+          collapse={isSearchCollapsed}
+          onCollapse={() => setIsSearchCollapsed(true)}
+        /> */}
+        <MenuBar.Block count={80} label="Europe" />
+        <MenuBar.Block count={60} label="Middle-East" />
+        <MenuBar.Block count={60} label="Asia" />
+        <MenuBar.AddNew label="Add New Segments" />
+        <MenuBar.SubTitle
+          iconProps={[
+            {
+              icon: Settings,
+            },
+            {
+              icon: Plus,
+            },
+            {
+              icon: Search,
+            },
+          ]}
+        >
+          <Typography
+            component="h4"
+            style="h5"
+            textTransform="uppercase"
+            weight="bold"
+          >
+            Tags
+          </Typography>
+        </MenuBar.SubTitle>
+        <MenuBar.Block count={80} label="Europe" />
+        <MenuBar.Block count={60} label="Middle-East" />
+        <MenuBar.Block count={60} label="Asia" />
+      </MenuBar>
+      {<activeNavlink.component />}
+    </>
   );
 };
 
