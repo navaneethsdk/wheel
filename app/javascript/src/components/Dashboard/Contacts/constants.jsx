@@ -1,7 +1,9 @@
+import React from "react";
+
+import { Typography, Avatar } from "@bigbinary/neetoui";
 import * as yup from "yup";
 
 import ContactList from "./ContactList";
-import Designation from "./Table/Designation";
 import Menu from "./Table/Menu";
 
 export const CONTACTS_NAVLINKS = [
@@ -37,28 +39,39 @@ export const CONTACT_FORM_VALIDATION_SCHEMA = yup.object().shape({
 
 export const CONTACT_TABLE_COLUMN_DATA = [
   {
-    title: "NAME",
-    dataIndex: "id",
-    key: "id",
+    title: "NAME & ROLE",
+    dataIndex: "name",
+    key: "name",
     width: "25%",
-    render: Designation,
+    render: (name, { role, profile_pic }) => (
+      <div className="flex flex-row items-center">
+        <Avatar
+          className="mr-2"
+          size="large"
+          user={{ name, imageUrl: profile_pic }}
+        />
+        <div className="flex flex-col">
+          <Typography style="h5">{name}</Typography>
+          <Typography style="body3">{role}</Typography>
+        </div>
+      </div>
+    ),
   },
   {
     title: "EMAIL",
     dataIndex: "email",
-    key: "id",
+    key: "email",
     width: "25%",
   },
   {
     title: "CREATED AT",
     dataIndex: "created_at",
-    key: "id",
+    key: "created_at",
     width: "25%",
   },
   {
     title: "",
     dataIndex: "icon_button",
-    fixed: "right",
     key: "id",
     width: "25%",
     render: Menu,

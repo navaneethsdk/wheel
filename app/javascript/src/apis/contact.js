@@ -3,12 +3,14 @@ const fetch = async () => {
     name: "Ronald Richards",
     role: "Owner",
     email: "richards@example.com",
+    profile_pic: "https://i.pravatar.cc/300",
     created_at: new Date().toString(),
   };
   const userExample2 = {
     name: "Jacob Jones",
     role: "Owner",
     email: "jones@example.com",
+    profile_pic: "",
     created_at: new Date().toString(),
   };
   const mock = [];
