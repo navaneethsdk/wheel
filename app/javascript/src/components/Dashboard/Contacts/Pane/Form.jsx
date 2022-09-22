@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Formik, Form } from "formik";
 import { Check } from "neetoicons";
 import { Button, Pane } from "neetoui";
-import { Input, Textarea, Select } from "neetoui/formik";
+import { Input, Textarea } from "neetoui/formik";
 
 import notesApi from "apis/notes";
 
@@ -25,7 +25,7 @@ const ContactForm = ({ onClose, refetch, note, isEdit }) => {
       logger.error(err);
     }
   };
-
+  // TODO: This form is to be completed in the next PR (one involving creation of new contact form)
   return (
     <Formik
       initialValues={note}
@@ -51,20 +51,6 @@ const ContactForm = ({ onClose, refetch, note, isEdit }) => {
               name="description"
               placeholder="Enter note description"
               rows={2}
-            />
-            <Select
-              required
-              className="w-full flex-grow-0"
-              label="Assigned contact"
-              name="contact"
-              placeholder="Select Role"
-            />
-            <Select
-              required
-              className="w-full flex-grow-0"
-              label="Tags"
-              name="tag"
-              placeholder="Select Tag"
             />
           </Pane.Body>
           <Pane.Footer>

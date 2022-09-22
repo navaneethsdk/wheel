@@ -50,8 +50,8 @@ const Note = ({
             type="solid"
           />
         </div>
-        <div className="order-1 flex h-6 w-40 flex-none flex-grow-0 flex-row items-center p-0">
-          <div className="order-none flex h-4 w-32 flex-none flex-grow-0 flex-row items-center p-0">
+        <div className="order-1 flex h-6 flex-none flex-grow-0 flex-row items-center p-0">
+          <div className="order-none flex h-4 flex-none flex-grow-0 flex-row items-center p-0">
             <Clock
               className="order-none mr-1.5 h-3 w-3 flex-none flex-grow-0"
               color="#68737D"
@@ -61,7 +61,7 @@ const Note = ({
               content={timeToTooltipContentFormat(note.created_at)}
               position="bottom"
             >
-              <p className="order-1 flex h-4 w-32 flex-none flex-grow-0 items-center text-right text-xs font-normal not-italic leading-4 text-gray-600">
+              <p className="order-1 flex h-4 flex-none flex-grow-0 items-center text-right text-xs font-normal not-italic leading-4 text-gray-600">
                 Created {findRelativeTime(note.created_at)}
               </p>
             </Tooltip>
