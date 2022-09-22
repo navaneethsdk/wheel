@@ -31,10 +31,6 @@ module.exports = {
           900: "#192040",
         },
       },
-      width: {
-        323: "80.9rem",
-        318: "79.6rem",
-      },
     },
   },
   variants: {

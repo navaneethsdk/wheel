@@ -7,7 +7,7 @@ import { Container, Header } from "neetoui/layouts";
 import notesApi from "apis/notes";
 import EmptyState from "components/Common/EmptyState";
 
-import NodeList from "./NoteList";
+import NoteList from "./NoteList";
 import NewNotePane from "./Pane/Create";
 
 const Home = () => {
@@ -39,7 +39,6 @@ const Home = () => {
   return (
     <Container>
       <Header
-        menuBarToggle={function noRefCheck() {}}
         title="All Notes"
         actionBlock={
           <Button
@@ -54,24 +53,7 @@ const Home = () => {
         }}
       />
       {notes.length ? (
-        <>
-          {/* <SubHeader
-            rightActionBlock={
-              <Button
-                disabled={!selectedNoteIds.length}
-                icon={Delete}
-                label="Delete"
-                onClick={() => setShowDeleteAlert(true)}
-              />
-            }
-          /> */}
-          {/* <Table
-            fetchNotes={fetchNotes}
-            notes={notes}
-            setSelectedNoteIds={setSelectedNoteIds}
-          /> */}
-          <NodeList fetchNotes={fetchNotes} notes={notes} />
-        </>
+        <NoteList fetchNotes={fetchNotes} notes={notes} />
       ) : (
         <EmptyState
           image={EmptyNotesListImage}

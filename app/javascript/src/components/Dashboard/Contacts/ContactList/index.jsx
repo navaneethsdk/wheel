@@ -40,7 +40,6 @@ const Contacts = () => {
   return (
     <Container>
       <Header
-        menuBarToggle={function noRefCheck() {}}
         title="All Contacts"
         actionBlock={
           <Button
@@ -55,23 +54,11 @@ const Contacts = () => {
         }}
       />
       {contacts.length ? (
-        <>
-          {/* <SubHeader
-            rightActionBlock={
-              <Button
-                disabled={!selectedContactIds.length}
-                icon={Delete}
-                label="Delete"
-                onClick={() => setShowDeleteAlert(true)}
-              />
-            }
-          /> */}
-          <Table
-            contacts={contacts}
-            selectedContactIds={selectedContactIds}
-            setSelectedContactIds={setSelectedContactIds}
-          />
-        </>
+        <Table
+          contacts={contacts}
+          selectedContactIds={selectedContactIds}
+          setSelectedContactIds={setSelectedContactIds}
+        />
       ) : (
         <EmptyState
           image={EmptyContactsListImage}

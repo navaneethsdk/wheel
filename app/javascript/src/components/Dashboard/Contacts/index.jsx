@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { Settings, Plus, Search } from "@bigbinary/neeto-icons";
+import { Settings, Plus, Search } from "neetoicons";
 import { Typography } from "neetoui";
 import { MenuBar } from "neetoui/layouts";
 import queryString from "query-string";

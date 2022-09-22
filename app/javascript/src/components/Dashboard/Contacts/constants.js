@@ -1,10 +1,6 @@
-import React from "react";
-
-import { Typography, Avatar } from "@bigbinary/neetoui";
 import * as yup from "yup";
 
 import ContactList from "./ContactList";
-import Menu from "./Table/Menu";
 
 export const CONTACTS_NAVLINKS = [
   {
@@ -43,19 +39,6 @@ export const CONTACT_TABLE_COLUMN_DATA = [
     dataIndex: "name",
     key: "name",
     width: "25%",
-    render: (name, { role, profile_pic }) => (
-      <div className="flex flex-row items-center">
-        <Avatar
-          className="mr-2"
-          size="large"
-          user={{ name, imageUrl: profile_pic }}
-        />
-        <div className="flex flex-col">
-          <Typography style="h5">{name}</Typography>
-          <Typography style="body3">{role}</Typography>
-        </div>
-      </div>
-    ),
   },
   {
     title: "EMAIL",
@@ -74,6 +57,5 @@ export const CONTACT_TABLE_COLUMN_DATA = [
     dataIndex: "icon_button",
     key: "id",
     width: "25%",
-    render: Menu,
   },
 ];

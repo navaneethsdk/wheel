@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { Settings, Plus, Search } from "@bigbinary/neeto-icons";
+import { Settings, Plus, Search } from "neetoicons";
 import { Typography } from "neetoui";
 import { MenuBar } from "neetoui/layouts";
 import queryString from "query-string";
@@ -51,14 +51,9 @@ const Notes = ({ history, location }) => {
             Segments
           </Typography>
         </MenuBar.SubTitle>
-        {/* <MenuBar.Search
-          collapse={isSearchCollapsed}
-          onCollapse={() => setIsSearchCollapsed(true)}
-        /> */}
         <MenuBar.Block count={80} label="Europe" />
         <MenuBar.Block count={60} label="Middle-East" />
         <MenuBar.Block count={60} label="Asia" />
-        <MenuBar.AddNew label="Add New Segments" />
         <MenuBar.SubTitle
           iconProps={[
             {
