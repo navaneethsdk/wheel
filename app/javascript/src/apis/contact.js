@@ -28,11 +28,18 @@ const fetch = async () => {
     },
   };
 };
-const create = async () => {};
+const create = async values => {
+  values;
+};
+const update = async values => {
+  values;
+};
 const destroy = async () => {};
+
 const contactApi = {
   fetch,
   create,
+  update,
   destroy,
 };
 

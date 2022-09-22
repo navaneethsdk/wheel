@@ -23,14 +23,30 @@ export const CONTACTS_NAVLINKS = [
   },
 ];
 
+export const ROLE = [
+  { value: "owner", label: "Owner" },
+  { value: "admin", label: "Admin" },
+  { value: "member", label: "Member" },
+];
+
 export const CONTACT_FORM_INITIAL_FORM_VALUES = {
-  title: "",
-  description: "",
+  firstName: "",
+  lastName: "",
+  email: "",
+  role: null,
 };
 
 export const CONTACT_FORM_VALIDATION_SCHEMA = yup.object().shape({
-  title: yup.string().required("Title is required"),
-  description: yup.string().required("Description is required"),
+  firstName: yup.string().required("First Name is required"),
+  lastName: yup.string().required("Last Name is required"),
+  email: yup.string().required("Email is required"),
+  role: yup
+    .object()
+    .nullable()
+    .shape({
+      label: yup.string().oneOf(ROLE.map(role => role.label)),
+      value: yup.string().oneOf(ROLE.map(role => role.value)),
+    }),
 });
 
 export const CONTACT_TABLE_COLUMN_DATA = [
