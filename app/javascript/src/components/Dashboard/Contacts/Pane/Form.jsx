@@ -3,11 +3,11 @@ import React, { useState } from "react";
 import { Formik, Form } from "formik";
 import { Check } from "neetoicons";
 import { Button, Pane } from "neetoui";
-import { Input, Textarea } from "neetoui/formik";
+import { Input, Select } from "neetoui/formik";
 
-import notesApi from "apis/notes";
+import contactsApi from "apis/contact";
 
-import { CONTACT_FORM_VALIDATION_SCHEMA } from "../constants";
+import { CONTACT_FORM_VALIDATION_SCHEMA, ROLE } from "../constants";
 
 const ContactForm = ({ onClose, refetch, note, isEdit }) => {
   const [submitted, setSubmitted] = useState(false);
@@ -15,9 +15,9 @@ const ContactForm = ({ onClose, refetch, note, isEdit }) => {
   const handleSubmit = async values => {
     try {
       if (isEdit) {
-        await notesApi.update(note.id, values);
+        await contactsApi.update(values);
       } else {
-        await notesApi.create(values);
+        await contactsApi.create(values);
       }
       refetch();
       onClose();
@@ -25,7 +25,7 @@ const ContactForm = ({ onClose, refetch, note, isEdit }) => {
       logger.error(err);
     }
   };
-  // TODO: This form is to be completed in the next PR (one involving creation of new contact form)
+
   return (
     <Formik
       initialValues={note}
@@ -37,20 +37,36 @@ const ContactForm = ({ onClose, refetch, note, isEdit }) => {
       {({ isSubmitting }) => (
         <Form className="w-full">
           <Pane.Body className="space-y-6">
+            <div className="flex w-full flex-row">
+              <Input
+                required
+                className="mr-1 w-1/2 flex-grow-0"
+                label="First Name"
+                name="firstName"
+                placeholder="Enter first name"
+              />
+              <Input
+                required
+                className="ml-1 w-1/2 flex-grow-0"
+                label="Last Name"
+                name="lastName"
+                placeholder="Enter last name"
+              />
+            </div>
             <Input
               required
               className="w-full flex-grow-0"
-              label="Title"
-              name="title"
-              placeholder="Enter note title"
+              label="Email"
+              name="email"
+              placeholder="Enter your email address"
             />
-            <Textarea
+            <Select
               required
               className="w-full flex-grow-0"
-              label="Description"
-              name="description"
-              placeholder="Enter note description"
-              rows={2}
+              label="Role"
+              name="role"
+              options={ROLE}
+              placeholder="Select Role"
             />
           </Pane.Body>
           <Pane.Footer>
