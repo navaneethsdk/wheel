@@ -1,12 +1,8 @@
-.notes-table-height {
-  height: calc(100vh - 160px);
+.notes-card {
+  border-color: #d8dcde;
+  box-shadow: 0px 1px 4px -1px rgba(28, 48, 74, 0.12);
 }
 
-.notes-font {
-  font-family: 'SF Pro Text';
-}
-
-.delete-alert button:first-child {
-  color: #fff !important;
-  background-color: #2f3941 !important;
+.w-title{
+  width: 58.1rem !important;
 }

@@ -1,8 +1,8 @@
 import React from "react";
 
-import { MenuVertical } from "@bigbinary/neeto-icons";
+import { MenuVertical } from "neetoicons";
 
-const Menu = () => (
+const DropdownMenu = () => (
   <button className="flex h-5 w-8 flex-row items-center justify-center rounded-sm py-1.5 px-2">
     <MenuVertical
       className="order-none flex-none flex-grow-0"
@@ -12,4 +12,4 @@ const Menu = () => (
   </button>
 );
 
-export default Menu;
+export default DropdownMenu;

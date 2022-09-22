@@ -5,13 +5,13 @@ import { Typography } from "neetoui";
 import { MenuBar } from "neetoui/layouts";
 import queryString from "query-string";
 
-import { NOTES_NAVLINKS } from "./constants";
+import { CONTACTS_NAVLINKS } from "./constants";
 import { getActiveNavLink } from "./utils";
 
-const Notes = ({ history, location }) => {
+const Contacts = ({ history, location }) => {
   const { tab } = queryString.parse(location.search);
   const [activeNavlink, setActiveNavlink] = useState(
-    () => getActiveNavLink(tab) || NOTES_NAVLINKS[0]
+    () => getActiveNavLink(tab) || CONTACTS_NAVLINKS[0]
   );
 
   useEffect(() => {
@@ -25,8 +25,8 @@ const Notes = ({ history, location }) => {
 
   return (
     <>
-      <MenuBar showMenu title="Notes">
-        {NOTES_NAVLINKS.map(navlink => (
+      <MenuBar showMenu title="Contacts">
+        {CONTACTS_NAVLINKS.map(navlink => (
           <MenuBar.Block
             active={tab === navlink.key}
             key={navlink.key}
@@ -34,14 +34,7 @@ const Notes = ({ history, location }) => {
             onClick={() => setActiveNavlink(navlink)}
           />
         ))}
-        <MenuBar.SubTitle
-          iconProps={[
-            {
-              icon: Search,
-              onClick: () => {},
-            },
-          ]}
-        >
+        <MenuBar.SubTitle>
           <Typography
             component="h4"
             style="h5"
@@ -51,9 +44,6 @@ const Notes = ({ history, location }) => {
             Segments
           </Typography>
         </MenuBar.SubTitle>
-        <MenuBar.Block count={80} label="Europe" />
-        <MenuBar.Block count={60} label="Middle-East" />
-        <MenuBar.Block count={60} label="Asia" />
         <MenuBar.SubTitle
           iconProps={[
             {
@@ -76,13 +66,10 @@ const Notes = ({ history, location }) => {
             Tags
           </Typography>
         </MenuBar.SubTitle>
-        <MenuBar.Block count={80} label="Europe" />
-        <MenuBar.Block count={60} label="Middle-East" />
-        <MenuBar.Block count={60} label="Asia" />
       </MenuBar>
       {<activeNavlink.component />}
     </>
   );
 };
 
-export default Notes;
+export default Contacts;

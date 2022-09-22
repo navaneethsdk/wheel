@@ -3,17 +3,13 @@ import React, { useState } from "react";
 import { Formik, Form } from "formik";
 import { Check } from "neetoicons";
 import { Button, Pane } from "neetoui";
-import { Input, Textarea, Select } from "neetoui/formik";
+import { Input, Textarea } from "neetoui/formik";
 
 import notesApi from "apis/notes";
 
-import {
-  CONTACTS,
-  NOTES_FORM_VALIDATION_SCHEMA,
-  TAG_VALUES,
-} from "../constants";
+import { CONTACT_FORM_VALIDATION_SCHEMA } from "../constants";
 
-const NoteForm = ({ onClose, refetch, note, isEdit }) => {
+const ContactForm = ({ onClose, refetch, note, isEdit }) => {
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = async values => {
@@ -29,13 +25,13 @@ const NoteForm = ({ onClose, refetch, note, isEdit }) => {
       logger.error(err);
     }
   };
-
+  // TODO: This form is to be completed in the next PR (one involving creation of new contact form)
   return (
     <Formik
       initialValues={note}
       validateOnBlur={submitted}
       validateOnChange={submitted}
-      validationSchema={NOTES_FORM_VALIDATION_SCHEMA}
+      validationSchema={CONTACT_FORM_VALIDATION_SCHEMA}
       onSubmit={handleSubmit}
     >
       {({ isSubmitting }) => (
@@ -55,22 +51,6 @@ const NoteForm = ({ onClose, refetch, note, isEdit }) => {
               name="description"
               placeholder="Enter note description"
               rows={2}
-            />
-            <Select
-              required
-              className="w-full flex-grow-0"
-              label="Assigned contact"
-              name="contact"
-              options={CONTACTS}
-              placeholder="Select Contact"
-            />
-            <Select
-              required
-              className="w-full flex-grow-0"
-              label="Tags"
-              name="tag"
-              options={TAG_VALUES}
-              placeholder="Select Tag"
             />
           </Pane.Body>
           <Pane.Footer>
@@ -98,4 +78,4 @@ const NoteForm = ({ onClose, refetch, note, isEdit }) => {
   );
 };
 
-export default NoteForm;
+export default ContactForm;
