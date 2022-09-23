@@ -7,6 +7,7 @@ import { Container, Header } from "neetoui/layouts";
 import contactApi from "apis/contact";
 import EmptyState from "components/Common/EmptyState";
 
+import DeleteAlert from "../DeleteAlert";
 import NewContactPane from "../Pane/Create";
 import Table from "../Table";
 
@@ -16,6 +17,8 @@ const Contacts = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [contacts, setContacts] = useState([]);
   const [selectedContactIds, setSelectedContactIds] = useState([]);
+  const [showDeleteAlert, setShowDeleteAlert] = useState(false);
+  const [contactToBeDeleted, setContactToBeDeleted] = useState({});
 
   useEffect(() => {
     fetchContacts();
@@ -57,7 +60,9 @@ const Contacts = () => {
         <Table
           contacts={contacts}
           selectedContactIds={selectedContactIds}
+          setContactToBeDeleted={setContactToBeDeleted}
           setSelectedContactIds={setSelectedContactIds}
+          setShowDeleteAlert={setShowDeleteAlert}
         />
       ) : (
         <EmptyState
@@ -73,6 +78,14 @@ const Contacts = () => {
         setShowPane={setShowNewContactPane}
         showPane={showNewContactPane}
       />
+      {showDeleteAlert && (
+        <DeleteAlert
+          contactToBeDeleted={contactToBeDeleted}
+          refetch={fetchContacts}
+          setContactToBeDeleted={setContactToBeDeleted}
+          onClose={() => setShowDeleteAlert(false)}
+        />
+      )}
     </Container>
   );
 };
