@@ -85,6 +85,7 @@ const ContactForm = ({ onClose, refetch, note, isEdit }) => {
               label="Cancel"
               size="large"
               style="text"
+              type="reset"
               onClick={onClose}
             />
           </Pane.Footer>

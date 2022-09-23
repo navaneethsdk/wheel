@@ -22,6 +22,7 @@ const Note = ({
     setNoteToBeDeleted(note);
     setShowDeleteAlert(true);
   };
+
   return (
     <div className="notes-card order-none mb-4 box-border flex h-40 flex-none flex-grow-0 flex-col items-start self-stretch rounded-sm border border-solid bg-white p-4">
       <div className="border-b pb-3">
@@ -55,11 +56,11 @@ const Note = ({
               size={16}
             />
             <Tooltip
-              content={timeToTooltipContentFormat(note.created_at)}
+              content={timeToTooltipContentFormat(note.createdAt)}
               position="bottom"
             >
               <p className="order-1 flex h-4 flex-none flex-grow-0 items-center text-right text-xs font-normal not-italic leading-4 text-gray-600">
-                Created {findRelativeTime(note.created_at)}
+                Created {findRelativeTime(note.createdAt)}
               </p>
             </Tooltip>
           </div>

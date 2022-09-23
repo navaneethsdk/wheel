@@ -80,7 +80,7 @@ const Notes = ({ history, location }) => {
         <MenuBar.Block count={60} label="Middle-East" />
         <MenuBar.Block count={60} label="Asia" />
       </MenuBar>
-      {<activeNavlink.component />}
+      <activeNavlink.component />
     </>
   );
 };

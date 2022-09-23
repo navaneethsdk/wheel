@@ -67,7 +67,7 @@ const Contacts = ({ history, location }) => {
           </Typography>
         </MenuBar.SubTitle>
       </MenuBar>
-      {<activeNavlink.component />}
+      <activeNavlink.component />
     </>
   );
 };

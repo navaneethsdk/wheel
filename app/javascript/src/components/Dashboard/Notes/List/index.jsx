@@ -7,11 +7,12 @@ import Note from "./Note";
 import DeleteAlert from "../DeleteAlert";
 import EditNotePane from "../Pane/Edit";
 
-const NoteList = ({ notes = [], fetchNotes }) => {
+const List = ({ notes = [], fetchNotes }) => {
   const [showEditNote, setShowEditNote] = useState(false);
   const [noteToBeEdited, setNoteToBeEdited] = useState({});
   const [showDeleteAlert, setShowDeleteAlert] = useState(false);
   const [noteToBeDeleted, setNoteToBeDeleted] = useState({});
+
   return (
     <>
       <div>
@@ -44,4 +45,4 @@ const NoteList = ({ notes = [], fetchNotes }) => {
   );
 };
 
-export default NoteList;
+export default List;

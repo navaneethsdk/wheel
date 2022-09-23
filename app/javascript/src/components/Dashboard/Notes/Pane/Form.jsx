@@ -57,6 +57,7 @@ const NoteForm = ({ onClose, refetch, note, isEdit }) => {
               rows={2}
             />
             <Select
+              isMulti
               required
               className="w-full flex-grow-0"
               label="Assigned contact"
@@ -68,9 +69,9 @@ const NoteForm = ({ onClose, refetch, note, isEdit }) => {
               required
               className="w-full flex-grow-0"
               label="Tags"
-              name="tag"
+              name="tags"
               options={TAG_VALUES}
-              placeholder="Select Tag"
+              placeholder="Select Tags"
             />
           </Pane.Body>
           <Pane.Footer>
@@ -89,6 +90,7 @@ const NoteForm = ({ onClose, refetch, note, isEdit }) => {
               label="Cancel"
               size="large"
               style="text"
+              type="reset"
               onClick={onClose}
             />
           </Pane.Footer>
