@@ -1,22 +1,30 @@
 import React from "react";
 
-import { MenuHorizontal } from "neetoicons";
 import { Table as NeetoUITable, Typography, Avatar } from "neetoui";
+
+import ContactDropdown from "./ContactDropdown";
 
 import { CONTACT_TABLE_COLUMN_DATA } from "../constants";
 import { stringToDate } from "../utils";
 
 const Table = ({
   selectedContactIds,
+  setContactToBeDeleted,
   setSelectedContactIds,
+  setShowDeleteAlert,
   contacts = [],
 }) => {
+  const handleDelete = () => {
+    setShowDeleteAlert(true);
+  };
   const modifyContactDateFormat = contacts =>
     contacts.map(contact => ({
       ...contact,
       created_at: stringToDate(contact["created_at"]),
     }));
-  const renderMenuColumn = () => <MenuHorizontal size={16} />;
+  const renderMenuColumn = () => (
+    <ContactDropdown handleDelete={handleDelete} />
+  );
   const renderProfileColumn = (name, { role, profile_pic }) => (
     <div className="flex flex-row items-center">
       <Avatar
@@ -51,6 +59,9 @@ const Table = ({
         rowData={modifyContactDateFormat(contacts)}
         selectedRowKeys={selectedContactIds}
         onRowSelect={selectedRowKeys => setSelectedContactIds(selectedRowKeys)}
+        onRowClick={(_, note) => {
+          setContactToBeDeleted(note);
+        }}
       />
     </div>
   );

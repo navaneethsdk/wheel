@@ -14,11 +14,11 @@ const Note = ({
   setShowEditNote,
   setShowDeleteAlert,
 }) => {
-  const handleEditClick = () => {
+  const handleEdit = () => {
     setNoteToBeEdited(note);
     setShowEditNote(true);
   };
-  const handleDeleteClick = () => {
+  const handleDelete = () => {
     setNoteToBeDeleted(note);
     setShowDeleteAlert(true);
   };
@@ -30,10 +30,7 @@ const Note = ({
             {note.title}
           </div>
           <div id="menu">
-            <NoteDropdown
-              handleDeleteClick={handleDeleteClick}
-              handleEditClick={handleEditClick}
-            />
+            <NoteDropdown handleDelete={handleDelete} handleEdit={handleEdit} />
           </div>
         </div>
         <div className="order-1 flex h-10 w-full flex-none flex-grow-0 items-center self-stretch text-sm font-normal not-italic leading-5 text-gray-600">
