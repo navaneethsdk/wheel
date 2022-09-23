@@ -3,38 +3,29 @@ const fetch = async () => {
     name: "Ronald Richards",
     role: "Owner",
     email: "richards@example.com",
-    profile_pic: "https://i.pravatar.cc/300",
-    created_at: new Date().toString(),
+    profilePic: "https://i.pravatar.cc/300",
+    createdAt: new Date().toString(),
   };
   const userExample2 = {
     name: "Jacob Jones",
     role: "Owner",
     email: "jones@example.com",
-    profile_pic: "",
-    created_at: new Date().toString(),
+    profilePic: "",
+    createdAt: new Date().toString(),
   };
-  const mock = [];
-  let count = 0;
-  for (let i = 0; i < 50; i++) {
-    userExample1["id"] = count;
-    userExample2["id"] = count + 1;
-    count = count + 2;
-    mock.push(JSON.parse(JSON.stringify(userExample1)));
-    mock.push(JSON.parse(JSON.stringify(userExample2)));
-  }
-  return {
+  const mock = Array.from({ length: 100 }, (v, i) =>
+    i % 2 === 0 ? { ...userExample1, id: i } : { ...userExample2, id: i }
+  );
+
+  return Promise.resolve({
     data: {
       contacts: mock,
     },
-  };
+  });
 };
-const create = async values => {
-  values;
-};
-const update = async values => {
-  values;
-};
-const destroy = async () => {};
+const create = async values => Promise.resolve(values);
+const update = async values => Promise.resolve(values);
+const destroy = async () => Promise.resolve();
 
 const contactApi = {
   fetch,

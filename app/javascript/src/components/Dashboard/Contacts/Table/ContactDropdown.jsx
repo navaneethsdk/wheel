@@ -1,15 +1,18 @@
 import React from "react";
 
+import { MenuHorizontal } from "neetoicons";
 import { Dropdown } from "neetoui";
-
-import DropdownMenu from "./DropdownMenu";
 
 const ContactDropdown = ({ handleDelete }) => {
   const { Menu, MenuItem } = Dropdown;
+  const renderDropdownMenu = () => <MenuHorizontal size={16} />;
+
   return (
-    <Dropdown customTarget={DropdownMenu}>
+    <Dropdown customTarget={renderDropdownMenu}>
       <Menu>
-        <MenuItem.Button onClick={handleDelete}>Delete</MenuItem.Button>
+        <MenuItem.Button style="danger" onClick={handleDelete}>
+          Delete
+        </MenuItem.Button>
       </Menu>
     </Dropdown>
   );

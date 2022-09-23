@@ -7,11 +7,11 @@ import { Container, Header } from "neetoui/layouts";
 import contactApi from "apis/contact";
 import EmptyState from "components/Common/EmptyState";
 
-import DeleteAlert from "../DeleteAlert";
-import NewContactPane from "../Pane/Create";
-import Table from "../Table";
+import DeleteAlert from "./DeleteAlert";
+import Create from "./Pane/Create";
+import Table from "./Table";
 
-const Contacts = () => {
+const List = () => {
   const [loading, setLoading] = useState(true);
   const [showNewContactPane, setShowNewContactPane] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -73,7 +73,7 @@ const Contacts = () => {
           title="Looks like you don't have any contacts!"
         />
       )}
-      <NewContactPane
+      <Create
         fetchContacts={fetchContacts}
         setShowPane={setShowNewContactPane}
         showPane={showNewContactPane}
@@ -90,4 +90,4 @@ const Contacts = () => {
   );
 };
 
-export default Contacts;
+export default List;

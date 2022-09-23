@@ -1,25 +1,25 @@
 import * as yup from "yup";
 
-import ContactList from "./ContactList";
+import List from "./List";
 
 export const CONTACTS_NAVLINKS = [
   {
     key: "all",
     label: "All",
     path: "/contacts?tab=all",
-    component: ContactList,
+    component: List,
   },
   {
     key: "archived",
     label: "Archived",
     path: "/contacts?tab=archived",
-    component: ContactList,
+    component: List,
   },
   {
     key: "completed",
     label: "Completed",
     path: "/contacts?tab=completed",
-    component: ContactList,
+    component: List,
   },
 ];
 
@@ -64,13 +64,13 @@ export const CONTACT_TABLE_COLUMN_DATA = [
   },
   {
     title: "CREATED AT",
-    dataIndex: "created_at",
-    key: "created_at",
+    dataIndex: "createdAt",
+    key: "createdAt",
     width: "25%",
   },
   {
     title: "",
-    dataIndex: "icon_button",
+    dataIndex: "iconButton",
     key: "id",
     width: "25%",
   },

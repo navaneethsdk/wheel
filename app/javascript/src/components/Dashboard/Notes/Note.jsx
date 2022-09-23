@@ -7,10 +7,10 @@ import { Container, Header } from "neetoui/layouts";
 import notesApi from "apis/notes";
 import EmptyState from "components/Common/EmptyState";
 
-import NoteList from "./NoteList";
+import List from "./List";
 import NewNotePane from "./Pane/Create";
 
-const Home = () => {
+const Note = () => {
   const [loading, setLoading] = useState(true);
   const [showNewNotePane, setShowNewNotePane] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -53,7 +53,7 @@ const Home = () => {
         }}
       />
       {notes.length ? (
-        <NoteList fetchNotes={fetchNotes} notes={notes} />
+        <List fetchNotes={fetchNotes} notes={notes} />
       ) : (
         <EmptyState
           image={EmptyNotesListImage}
@@ -72,4 +72,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Note;

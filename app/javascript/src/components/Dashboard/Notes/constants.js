@@ -1,31 +1,31 @@
 import * as yup from "yup";
 
-import Home from "./Home";
+import Note from "./Note";
 
 export const NOTES_NAVLINKS = [
   {
     key: "all",
     label: "All",
     path: "/notes?tab=all",
-    component: Home,
+    component: Note,
   },
   {
     key: "users",
     label: "Users",
     path: "/notes?tab=users",
-    component: Home,
+    component: Note,
   },
   {
     key: "leads",
     label: "Leads",
     path: "/notes?tab=leads",
-    component: Home,
+    component: Note,
   },
   {
     key: "visitors",
     label: "Visitors",
     path: "/notes?tab=visitors",
-    component: Home,
+    component: Note,
   },
 ];
 
@@ -33,7 +33,7 @@ export const NOTES_FORM_INITIAL_FORM_VALUES = {
   title: "",
   description: "",
   contact: null,
-  tag: null,
+  tags: null,
 };
 
 export const TAG_VALUES = [
@@ -60,7 +60,7 @@ export const NOTES_FORM_VALIDATION_SCHEMA = yup.object().shape({
       label: yup.string().oneOf(CONTACTS.map(contact => contact.label)),
       value: yup.string().oneOf(CONTACTS.map(contact => contact.value)),
     }),
-  tag: yup
+  tags: yup
     .object()
     .nullable()
     .shape({
