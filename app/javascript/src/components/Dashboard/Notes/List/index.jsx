@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { v1 as uuidV4 } from "uuid";
+import uuid from "uuid";
 
 import Note from "./Note";
 
@@ -18,7 +18,7 @@ const List = ({ notes = [], fetchNotes }) => {
       <div>
         {notes.map(note => (
           <Note
-            key={uuidV4()}
+            key={uuid.v1()}
             note={note}
             setNoteToBeDeleted={setNoteToBeDeleted}
             setNoteToBeEdited={setNoteToBeEdited}
