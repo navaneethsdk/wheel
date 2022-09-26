@@ -57,7 +57,6 @@ const NoteForm = ({ onClose, refetch, note, isEdit }) => {
               rows={2}
             />
             <Select
-              isMulti
               required
               className="w-full flex-grow-0"
               label="Assigned contact"
@@ -66,6 +65,7 @@ const NoteForm = ({ onClose, refetch, note, isEdit }) => {
               placeholder="Select Contact"
             />
             <Select
+              isMulti
               required
               className="w-full flex-grow-0"
               label="Tags"
