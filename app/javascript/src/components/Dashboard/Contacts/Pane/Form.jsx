@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { Formik, Form } from "formik";
 import { Check } from "neetoicons";
-import { Button, Pane } from "neetoui";
+import { Button, Pane, Toastr } from "neetoui";
 import { Input, Select } from "neetoui/formik";
 
 import contactsApi from "apis/contact";
@@ -21,6 +21,7 @@ const ContactForm = ({ onClose, refetch, note, isEdit }) => {
       }
       refetch();
       onClose();
+      Toastr.success("Contact added successfully.");
     } catch (err) {
       logger.error(err);
     }
