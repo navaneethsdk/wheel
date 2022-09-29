@@ -46,7 +46,8 @@ export const CONTACT_FORM_VALIDATION_SCHEMA = yup.object().shape({
     .shape({
       label: yup.string().oneOf(ROLE.map(role => role.label)),
       value: yup.string().oneOf(ROLE.map(role => role.value)),
-    }),
+    })
+    .required("Role is required"),
 });
 
 export const CONTACT_TABLE_COLUMN_DATA = [

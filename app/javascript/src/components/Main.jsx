@@ -5,8 +5,7 @@ import PropTypes from "prop-types";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { isPresent } from "utils";
-
-import "../lib/dayjs"; // eslint-disable-line
+import "dayJS"; // eslint-disable-line
 
 import { setAuthHeaders, registerIntercepts } from "apis/axios";
 import { initializeLogger } from "common/logger";

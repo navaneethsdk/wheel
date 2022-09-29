@@ -1,13 +1,16 @@
 import React from "react";
 
-import { Pane, Typography } from "neetoui";
+import { Pane, Typography, Toastr } from "neetoui";
 
 import Form from "./Form";
 
 import { CONTACT_FORM_INITIAL_FORM_VALUES } from "../constants";
 
 const Create = ({ fetchContacts, showPane, setShowPane }) => {
-  const onClose = () => setShowPane(false);
+  const onClose = () => {
+    setShowPane(false);
+    Toastr.success("Contact added successfully.");
+  };
 
   return (
     <Pane isOpen={showPane} onClose={onClose}>

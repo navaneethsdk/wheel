@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import EmptyContactsListImage from "images/EmptyNotesList";
-import { Button, PageLoader } from "neetoui";
+import { Button, PageLoader, Toastr } from "neetoui";
 import { Container, Header } from "neetoui/layouts";
 
 import contactApi from "apis/contact";
@@ -34,6 +34,11 @@ const List = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleClose = () => {
+    setShowDeleteAlert(false);
+    Toastr.success("Contact Deleted Successfully.");
   };
 
   if (loading) {
@@ -83,7 +88,7 @@ const List = () => {
           contactToBeDeleted={contactToBeDeleted}
           refetch={fetchContacts}
           setContactToBeDeleted={setContactToBeDeleted}
-          onClose={() => setShowDeleteAlert(false)}
+          onClose={handleClose}
         />
       )}
     </Container>

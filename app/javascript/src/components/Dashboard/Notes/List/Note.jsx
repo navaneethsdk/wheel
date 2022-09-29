@@ -3,7 +3,7 @@ import React from "react";
 import { Clock } from "neetoicons";
 import { Avatar, Tooltip, Tag } from "neetoui";
 
-import NoteDropdown from "./NoteDropdown";
+import DropdownWrapper from "./DropdownWrapper";
 
 import { timeToTooltipContentFormat, findRelativeTime } from "../utils";
 
@@ -31,7 +31,10 @@ const Note = ({
             {note.title}
           </div>
           <div id="menu">
-            <NoteDropdown handleDelete={handleDelete} handleEdit={handleEdit} />
+            <DropdownWrapper
+              handleDelete={handleDelete}
+              handleEdit={handleEdit}
+            />
           </div>
         </div>
         <div className="order-1 flex h-10 w-full flex-none flex-grow-0 items-center self-stretch text-sm font-normal not-italic leading-5 text-gray-600">

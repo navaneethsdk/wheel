@@ -4,7 +4,7 @@ import { Dropdown } from "neetoui";
 
 import DropdownMenu from "./DropdownMenu";
 
-const NoteDropdown = ({ handleEdit, handleDelete }) => {
+const DropdownWrapper = ({ handleEdit, handleDelete }) => {
   const { Menu, MenuItem } = Dropdown;
 
   return (
@@ -18,4 +18,4 @@ const NoteDropdown = ({ handleEdit, handleDelete }) => {
     </Dropdown>
   );
 };
-export default NoteDropdown;
+export default DropdownWrapper;
