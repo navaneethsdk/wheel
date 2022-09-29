@@ -63,7 +63,6 @@ export const NOTES_FORM_VALIDATION_SCHEMA = yup.object().shape({
     .required("Contact is required"),
   tags: yup
     .array()
-    .nullable()
     .of(
       yup.object().shape({
         label: yup.string().oneOf(TAG_VALUES.map(tag => tag.label)),
