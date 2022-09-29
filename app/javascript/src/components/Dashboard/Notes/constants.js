@@ -33,7 +33,7 @@ export const NOTES_FORM_INITIAL_FORM_VALUES = {
   title: "",
   description: "",
   contact: null,
-  tags: null,
+  tags: [],
 };
 
 export const TAG_VALUES = [
@@ -63,7 +63,6 @@ export const NOTES_FORM_VALIDATION_SCHEMA = yup.object().shape({
     .required("Contact is required"),
   tags: yup
     .array()
-    .nullable()
     .of(
       yup.object().shape({
         label: yup.string().oneOf(TAG_VALUES.map(tag => tag.label)),
