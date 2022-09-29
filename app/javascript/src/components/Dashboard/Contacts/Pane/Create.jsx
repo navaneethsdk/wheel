@@ -7,7 +7,9 @@ import Form from "./Form";
 import { CONTACT_FORM_INITIAL_FORM_VALUES } from "../constants";
 
 const Create = ({ fetchContacts, showPane, setShowPane }) => {
-  const onClose = () => setShowPane(false);
+  const onClose = () => {
+    setShowPane(false);
+  };
 
   return (
     <Pane isOpen={showPane} onClose={onClose}>

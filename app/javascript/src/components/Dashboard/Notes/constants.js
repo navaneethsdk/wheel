@@ -59,12 +59,16 @@ export const NOTES_FORM_VALIDATION_SCHEMA = yup.object().shape({
     .shape({
       label: yup.string().oneOf(CONTACTS.map(contact => contact.label)),
       value: yup.string().oneOf(CONTACTS.map(contact => contact.value)),
-    }),
+    })
+    .required("Contact is required"),
   tags: yup
-    .object()
+    .array()
     .nullable()
-    .shape({
-      label: yup.string().oneOf(TAG_VALUES.map(tag => tag.label)),
-      value: yup.string().oneOf(TAG_VALUES.map(tag => tag.value)),
-    }),
+    .of(
+      yup.object().shape({
+        label: yup.string().oneOf(TAG_VALUES.map(tag => tag.label)),
+        value: yup.string().oneOf(TAG_VALUES.map(tag => tag.value)),
+      })
+    )
+    .required("Tags are required"),
 });

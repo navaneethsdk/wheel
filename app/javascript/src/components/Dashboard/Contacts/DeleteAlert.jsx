@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Alert } from "neetoui";
+import { Alert, Toastr } from "neetoui";
 
 import contactApi from "apis/contact";
 
@@ -17,6 +17,7 @@ const DeleteAlert = ({
       setDeleting(true);
       await contactApi.destroy();
       onClose();
+      Toastr.success("Contact deleted successfully.");
       setContactToBeDeleted({});
       refetch();
     } catch (error) {
