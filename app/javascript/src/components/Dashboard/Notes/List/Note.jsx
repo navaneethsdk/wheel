@@ -30,12 +30,10 @@ const Note = ({
           <div className="w-title order-none flex h-6 flex-none flex-grow-0 items-center self-stretch text-base font-semibold not-italic leading-6 text-gray-800">
             {note.title}
           </div>
-          <div id="menu">
-            <DropdownWrapper
-              handleDelete={handleDelete}
-              handleEdit={handleEdit}
-            />
-          </div>
+          <DropdownWrapper
+            handleDelete={handleDelete}
+            handleEdit={handleEdit}
+          />
         </div>
         <div className="order-1 flex h-10 w-full flex-none flex-grow-0 items-center self-stretch text-sm font-normal not-italic leading-5 text-gray-600">
           {note.description}
