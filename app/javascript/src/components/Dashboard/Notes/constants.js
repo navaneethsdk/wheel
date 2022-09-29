@@ -33,7 +33,7 @@ export const NOTES_FORM_INITIAL_FORM_VALUES = {
   title: "",
   description: "",
   contact: null,
-  tags: [],
+  tags: null,
 };
 
 export const TAG_VALUES = [
